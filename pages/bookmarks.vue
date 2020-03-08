@@ -73,6 +73,8 @@ import * as URI from 'uri-js'
 import marked from 'marked'
 import Nav from '~/components/Nav.vue';
 
+
+const pinboardRSSURI = `https://feeds.pinboard.in/rss/u:ejfox/`
 const pinboardURI = `https://api.pinboard.in/v1/posts/all?auth_token=ejfox:6BCADA7AD389C5F5D7CE&results=72&format=json`
 // const pinboardURI = 'https://pinboard-api.now.sh/json/u:ejfox/?results=50'
 
