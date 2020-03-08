@@ -72,7 +72,7 @@ import insane from 'insane'
 import * as URI from 'uri-js'
 import marked from 'marked'
 import Nav from '~/components/Nav.vue';
-
+import * as parseString from 'xml2js'
 
 const pinboardRSSURI = `https://feeds.pinboard.in/rss/u:ejfox/`
 const pinboardURI = `https://api.pinboard.in/v1/posts/all?auth_token=ejfox:6BCADA7AD389C5F5D7CE&results=72&format=json`
@@ -90,12 +90,18 @@ export default {
   created: function () {
   },
   mounted: function () {
-    axios.get(pinboardURI)
+    axios.get(pinboardRSSURI)
     .then((res) => {
       console.log({
-        res
+        res.data
       })
-      console.lot(res.data[0])
+
+      parsedXML = parseString(res.data, (err, res) => {
+        this.blocks = res
+      })
+      
+
+
       this.blocks = res.data
     })
   },
